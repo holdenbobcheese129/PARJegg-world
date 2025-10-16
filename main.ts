@@ -134,14 +134,18 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     tiles.setCurrentTilemap(tilemap`testMap`)
     sprites.destroy(Start)
-    Bern = sprites.create(assets.image`BERN`, SpriteKind.Player)
-    controller.moveSprite(Bern)
-    scene.cameraFollowSprite(Bern)
+    gameRunActive = 0
+    if (gameRunActive == "0") {
+        Bern = sprites.create(assets.image`BERN`, SpriteKind.Player)
+        controller.moveSprite(Bern)
+        scene.cameraFollowSprite(Bern)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     game.gameOver(false)
 })
 let Bern: Sprite = null
+let gameRunActive = 0
 let Start: Sprite = null
 scene.setBackgroundImage(assets.image`thumbNail`)
 Start = sprites.create(assets.image`start`, SpriteKind.Button)
